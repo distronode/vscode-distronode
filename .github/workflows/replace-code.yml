@@ -1,0 +1,36 @@
+name: Replace Code
+
+on:
+  workflow_dispatch:
+    inputs:
+      oldcode:
+        description: 'The code substring to replace'
+        required: true
+        type: string
+      newcode:
+        description: 'The new substring to use as replacement'
+        required: true
+        type: string
+
+jobs:
+  replace_code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Replace old code with new code
+        run: |
+          # Find and replace code
+          grep -rl '${{ github.event.inputs.oldcode }}' . | while read file; do
+            sed -i 's/${{ github.event.inputs.oldcode }}/${{ github.event.inputs.newcode }}/g' "$file"
+          done
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Replace '${{ github.event.inputs.oldcode }}' with '${{ github.event.inputs.newcode }}'" || echo "No changes to commit"
+          git push
