@@ -1,0 +1,32 @@
+{
+  "ansible.ansible.path": "ansible",
+  "ansible.ansible.reuseTerminal": false,
+  "ansible.ansible.useFullyQualifiedCollectionNames": true,
+  "ansible.validation.enabled": true,
+  "ansible.validation.lint.arguments": "",
+  "ansible.validation.lint.enabled": true,
+  "ansible.validation.lint.path": "ansible-lint",
+  "ansible.ansibleNavigator.path": "ansible-navigator",
+  "ansible.playbook.arguments": "",
+  "ansible.executionEnvironment.containerEngine": "docker",
+  "ansible.executionEnvironment.containerOptions": "",
+  "ansible.executionEnvironment.enabled": false,
+  "ansible.executionEnvironment.image": "ghcr.io/ansible/community-ansible-dev-tools:latest",
+  "ansible.executionEnvironment.pull.policy": "missing",
+  "ansible.executionEnvironment.pull.arguments": "",
+  "ansible.executionEnvironment.volumeMounts": [],
+  "ansible.python.activationScript": "",
+  "ansible.python.interpreterPath": "python3",
+  "ansibleServer.trace.server": "verbose",
+  "ansible.lightspeed.enabled": false,
+  "ansible.lightspeed.suggestions.enabled": false,
+
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+
+  "security.workspace.trust.enabled": false,
+  "security.workspace.trust.startupPrompt": "never",
+  "redhat.telemetry.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "workbench.startupEditor": "none"
+}
