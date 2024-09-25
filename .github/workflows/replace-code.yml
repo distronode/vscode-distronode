@@ -31,6 +31,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git rm --cached -r .  # Remove all cached files from the index
           git add .
           git commit -m "Replace '${{ github.event.inputs.oldcode }}' with '${{ github.event.inputs.newcode }}'" || echo "No changes to commit"
           git push
