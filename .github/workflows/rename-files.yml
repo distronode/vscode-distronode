@@ -1,0 +1,35 @@
+name: Rename Files
+
+on:
+  workflow_dispatch:
+    inputs:
+      oldname:
+        description: 'The substring to replace in filenames'
+        required: true
+        type: string
+      newname:
+        description: 'The substring to use as replacement in filenames'
+        required: true
+        type: string
+
+jobs:
+  rename_files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Rename files
+        run: |
+          find . -name "*${{ github.event.inputs.oldname }}*" | while read file; do
+            mv "$file" "$(echo "$file" | sed 's/${{ github.event.inputs.oldname }}/${{ github.event.inputs.newname }}/g')"
+          done
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Rename files from ${{ github.event.inputs.oldname }} to ${{ github.event.inputs.newname }}" || echo "No changes to commit"
+          git push
