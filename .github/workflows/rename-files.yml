@@ -22,8 +22,12 @@ jobs:
 
       - name: Rename files
         run: |
+          # Find and rename files
           find . -name "*${{ github.event.inputs.oldname }}*" | while read file; do
-            mv "$file" "$(echo "$file" | sed 's/${{ github.event.inputs.oldname }}/${{ github.event.inputs.newname }}/g')"
+            new_file=$(echo "$file" | sed 's/${{ github.event.inputs.oldname }}/${{ github.event.inputs.newname }}/g')
+            if [[ "$file" != "$new_file" ]]; then
+              mv "$file" "$new_file" || echo "Failed to move $file to $new_file"
+            fi
           done
 
       - name: Commit changes
