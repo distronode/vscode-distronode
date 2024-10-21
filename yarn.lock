@@ -22,9 +22,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ansible/ansible-language-server@workspace:^, @ansible/ansible-language-server@workspace:packages/ansible-language-server":
+"@ansible/ansible-language-server@workspace:^, @ansible/ansible-language-server@workspace:packages/distronode-language-server":
   version: 0.0.0-use.local
-  resolution: "@ansible/ansible-language-server@workspace:packages/ansible-language-server"
+  resolution: "@ansible/ansible-language-server@workspace:packages/distronode-language-server"
   dependencies:
     "@flatten-js/interval-tree": "npm:^1.1.3"
     "@types/chai": "npm:^4.3.16"
